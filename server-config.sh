@@ -3,13 +3,16 @@
 #!/bin/bash
 
 name=$1
-echo "hello $name"
-echo "running configuration..."
+echo "Hello, $name"
+echo "Running Configuration..."
 
 apt update
 apt upgrade -y
 apt install openssh-server
-ip a
+
+echo "ip address of the server:"
+ip --brief address show
+
 whoami
 
 adduser --disabled-password --gecos "" $name
