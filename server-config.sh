@@ -6,16 +6,19 @@ name=$1
 echo "Hello, $name"
 echo "Running Configuration..."
 
+# update system
 apt update
 apt upgrade -y
-apt install openssh-server
+
+# install packages 
+apt install openssh-server nginx
 
 echo "ip address of the server:"
 ip --brief address show
 
-whoami
 
+echo "adding user $name"
 adduser --disabled-password --gecos "" $name
 
-cat /etc/passwd
-apt install nginx
+
+
