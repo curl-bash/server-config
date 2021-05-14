@@ -1,0 +1,13 @@
+server {
+	listen 8008;
+	listen [::]:8008;
+
+	server_name curlbash.tech;
+
+	root /var/www/curlbash;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
