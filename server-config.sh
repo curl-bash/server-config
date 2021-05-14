@@ -16,9 +16,11 @@ apt install openssh-server nginx
 echo "ip address of the server:"
 ip --brief address show
 
-
 echo "adding user $name"
 adduser --disabled-password --gecos "" $name
 
+echo "configuring nginx..."
+cp nginx_configs/curlbash /etc/nginx/sites-enabled/curlbash
+systemctl restart nginx
 
 
