@@ -11,13 +11,13 @@ apt update
 apt upgrade -y
 
 # install packages 
-apt install openssh-server nginx
+apt install -y nginx git
 
-echo "ip address of the server:"
-ip --brief address show
-
-echo "adding user $name"
-adduser --disabled-password --gecos "" $name
+sudo useradd -p $(openssl passwd -1 raspberry) -m $name
+sudo mkdir /home/$name/.ssh
+sudo cp /home/pi/.ssh/authorized_keys /home/$name/.ssh/
+sudo chown $name:$name /home/$name/.ssh/authorized_keys
+usermod -aG sudo $name
 
 echo "configuring nginx..."
 cp nginx_configs/curlbash /etc/nginx/sites-enabled/curlbash
