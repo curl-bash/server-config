@@ -20,11 +20,9 @@ curl spellcaster.sh/gh | bash
 useradd -p $(openssl passwd -1 raspberry) -m $name
 mkdir /home/$name/.ssh
 cp /home/pi/.ssh/authorized_keys /home/$name/.ssh/
-chown $name:$name /home/$name/.ssh/authorized_keys
+ssh-keygen -t ed25519 -q -C "$name@curlbash.tech" -N "" -f "/home/$name/.ssh/id_rsa" <<< n
+chown -R $name:$name /home/$name/.ssh
 usermod -aG sudo $name
-
-# generate ssh key
-ssh-keygen -t ed25519 -q -C "$name@curlbash.tech" -f "/home/$name/.ssh/id_rsa" -N ""
 
 echo "configuring nginx..."
 cp nginx_configs/curlbash /etc/nginx/sites-enabled/curlbash
