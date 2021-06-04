@@ -10,14 +10,11 @@ echo "Running Configuration..."
 apt update
 apt upgrade -y
 
-# install packages 
+# install packages
 apt install git nginx openjdk-11-jdk-headless
 
-echo "ip address of the server:"
-ip --brief address show
-
 echo "adding user $name"
-adduser --disabled-password --gecos "" $name
+adduser -p $(openssl passwd -1 raspberry) -m $name
 
 echo "configuring nginx..."
 cp nginx_configs/curlbash /etc/nginx/sites-enabled/curlbash
