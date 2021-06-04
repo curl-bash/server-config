@@ -11,7 +11,7 @@ apt update
 apt upgrade -y
 
 # install packages 
-apt install openssh-server nginx
+apt install git nginx openjdk-11-jdk-headless
 
 echo "ip address of the server:"
 ip --brief address show
