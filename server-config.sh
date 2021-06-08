@@ -14,7 +14,7 @@ apt upgrade -y
 apt install git nginx openjdk-11-jdk-headless
 
 echo "adding user $name"
-adduser -p $(openssl passwd -1 raspberry) -m $name
+useradd -p $(openssl passwd -1 raspberry) -m $name
 
 echo "configuring nginx..."
 cp nginx_configs/curlbash /etc/nginx/sites-enabled/curlbash
