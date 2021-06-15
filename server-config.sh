@@ -18,6 +18,7 @@ apt upgrade -y
 # install packages
 apt install git nginx openjdk-11-jdk-headless
 
-# echo "configuring nginx..."
-# cp nginx_configs/curlbash /etc/nginx/sites-enabled/curlbash
-# systemctl restart nginx
+# install minecraft server
+curl https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar -o server.jar
+echo "eula=true" > eula.txt
+# java -Xmx1024M -Xms1024M -jar server.jar nogui
