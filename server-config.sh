@@ -26,4 +26,6 @@ echo "eula=true" > eula.txt
 screen java -Xmx1024M -Xms1024M -jar server.jar nogui 
 
 # deploy website
-curl -OJL $site 
+curl -L  https://github.com/$site/archive/refs/heads/main.zip -o site.zip 
+unzip -j -o site.zip -d curlbash 
+cp -r curlbash /var/www/
