@@ -27,5 +27,5 @@ screen java -Xmx1024M -Xms1024M -jar server.jar nogui
 
 # deploy website
 curl -L  https://github.com/$site/archive/refs/heads/main.zip -o site.zip 
-unzip -j -o site.zip -d curlbash 
+unzip -o -j site.zip -d curlbash 
 cp -r curlbash /var/www/
